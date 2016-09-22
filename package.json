@@ -1,0 +1,21 @@
+{
+    "name": "yuidoc-zebkit-theme",
+    "version": "1.0.0",
+    "description": "Packaged based, javadoc-like API doc",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/barmalei/yuidoc-zebkit-theme.git"
+    },
+    "keywords": [
+        "yuidoc",
+        "zebkit",
+        "javadoc"
+    ],
+    "author": "Andrei Vishneuski",
+    "contributors": [ ],
+    "bugs": {
+        "url": "https://github.com/barmalei/yuidoc-zebkit-theme/issues"
+    },
+    "homepage": "https://github.com/barmalei/yuidoc-zebkit-theme",
+    "license" : "Apache"
+}

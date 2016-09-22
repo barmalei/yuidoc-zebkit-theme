@@ -1,0 +1,243 @@
+{{tagClass}}
+
+<div class="hd">
+    <table width="100%">
+        <tr>
+            <td>
+                <strong>
+                    {{#if interface}}
+                        Interface
+                    {{else}}
+                        {{#if isPackageClass}}
+                            Package
+                        {{else}}
+                            Class
+                        {{/if}}
+                    {{/if}}
+                </strong>
+
+                <strong style="color:orange;">
+                    {{moduleName}}
+                </strong>
+
+                {{#if uses}}
+                    <br/>
+                    <strong>
+                        mixed with
+                    </strong>
+                    {{#each uses}}
+                        <span class="type">&lt;{{#crossLink this}}{{/crossLink}}&gt;</span>
+                    {{/each}}
+                {{/if}}
+
+                {{#if extension_for}}
+                    <br/>
+                    <strong>
+                        Extension For:
+                    </strong>
+                    {{#each extension_for}}
+                        <a href="{{this}}.html">{{this}}</a>
+                    {{/each}}
+                {{/if}}
+
+                {{#if extends}}
+                    <br/>
+                    <strong>
+                        extends
+                    </strong>
+                    <span class="type">&lt;{{#crossLink extends}}{{/crossLink}}&gt;</span>
+                {{/if}}
+            </td>
+            {{#unless isPackageClass}}
+                <td align="right" valign="top">
+                    <a href="{{../projectRoot}}/classes/{{packageName}}.html">
+                        &lt;{{packageName}}&gt;
+                    </a>
+                </td>
+            {{/unless}}
+        <tr>
+    </table>
+</div>
+
+<br/>
+<div class="intro">
+    {{{classDescription}}}
+</div>
+
+
+{{#if is_constructor}}
+    {{#is_constructor}}
+        <strong>Constructor:</strong>
+        {{>method}}
+    {{/is_constructor}}
+{{/if}}
+
+<br/>
+<br/>
+<div id="classdocs">
+    <ul>
+        {{#if isPackageClass}}
+            <li>
+                <a href="#package">Package classes</a>
+            </li>
+        {{/if}}
+
+        {{#if methods}}
+            <li>
+                <a href="#methods">
+                    {{#if isPackageClass}}
+                        Package methods
+                    {{else}}
+                        Methods
+                    {{/if}}
+                </a>
+            </li>
+        {{/if}}
+        {{#if properties}}
+            <li>
+                <a href="#props">
+                    {{#if isPackageClass}}
+                        Package properties
+                    {{else}}
+                        Properties
+                    {{/if}}
+                </a>
+            </li>
+        {{/if}}
+
+        {{#if attrs}}
+            <li>
+                <a href="#attrs">Attributes</a>
+            </li>
+        {{/if}}
+
+        {{#if events}}
+            <li>
+                <a href="#events">Events</a>
+            </li>
+        {{/if}}
+    </ul>
+
+    <div>
+        {{#if isPackageClass}}
+            <div id="package">
+                <br/>
+                <ul style="column-count:2;column-gap:20px; list-style:none;">
+                    {{#packageClasses classes}}
+                        <li style="width2:33%;">
+                            <a href="{{../projectRoot}}classes/{{name}}.html">
+                                {{displayName}}
+                            </a>
+                        </li>
+                    {{/packageClasses}}
+                </ul>
+            </div>
+        {{/if}}
+
+
+        {{#if methods}}
+            <div id="methods">
+                <div class="bd">
+                    {{#if showMethodsIndex}}
+                        <br/>
+                        <table border="0" style="width:auto;" cellpadding="2">
+                            {{#methods}}
+                                <tr style="background:none;">
+                                    <td>
+                                        {{#if access}}
+                                            <strong> `{{access}}` </strong>
+
+                                            {{#if static}}
+                                                <strong> static </strong>
+                                            {{/if}}
+
+                                        {{else}}
+                                            {{#unless is_constructor}}
+                                                <strong> public </strong>
+
+                                                {{#if static}}
+                                                    <strong> static </strong>
+                                                {{/if}}
+                                            {{/unless}}
+                                        {{/if}}
+                                    </td>
+
+                                    <td>
+                                        {{#return}}
+                                            {{#if type}}
+                                                <span class="type">
+                                                    &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                                </span>
+                                            {{/if}}
+                                        {{else}}
+                                            <span class="type">
+                                                void
+                                            </span>
+                                        {{/return}}
+                                    </td>
+
+                                    <td>
+                                        <b>
+                                            <a class="name" href="#methods_{{name}}">{{name}} ({{paramsList}})</a>
+                                        </b>
+                                    </td>
+                                </tr>
+                            {{/methods}}
+                        </table>
+                    {{/if}}
+                    <br/>
+                </div>
+
+                <br/>
+                <table>
+                    {{#methods}}
+                        <tr>
+                            <td>
+                                {{>method}}
+                            </td>
+                        </tr>
+                    {{/methods}}
+                </table>
+            </div>
+        {{/if}}
+
+        {{#if properties}}
+            <div id="props">
+                {{#properties}}
+                    {{>props}}
+                {{/properties}}
+            </div>
+        {{/if}}
+
+        {{#if attrs}}
+            <div id="attrs">
+                <br/>
+                <table>
+                    {{#attrs}}
+                        <tr>
+                            <td>
+                                {{>attrs}}
+                            </td>
+                        </tr>
+                    {{/attrs}}
+                </table>
+            </div>
+        {{/if}}
+
+        {{#if events}}
+            <div id="events">
+                <br/>
+                <table>
+                    {{#events}}
+                        <tr>
+                            <td>
+                                {{>events}}
+                            </td>
+                        </tr>
+                    {{/events}}
+                </table>
+            </div>
+        {{/if}}
+
+    </div>
+</div>
