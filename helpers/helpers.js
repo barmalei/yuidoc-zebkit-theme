@@ -20,11 +20,19 @@ module.exports = {
                 var access    = classes[i].access,
                     className = classes[i].name;
 
-
-
                 this.isPackageClass = access === 'package';
                 this.isPublicClass  = access === 'public' ;
                 this.isPrivateClass = access === 'private';
+                this.isExtendedWithPrivate = false;
+
+                if (this.extends != null) {
+                    for (var n = 0; n < this.classes.length; n++) {
+                        if (this.classes[n].name === this.extends && this.classes[n].access === 'private') {
+                            this.isExtendedWithPrivate = true;
+                            break;
+                        }
+                    }
+                }
 
                 var maxLen = 0, pkgName = null, methodCount = 0;
                 for(var j = 0; j < pkgs.length; j++) {

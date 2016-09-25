@@ -1,6 +1,9 @@
 <a name="methods_{{name}}"></a>
 
 <div class="method item{{#if access}} {{access}}{{/if}}">
+
+
+<!--
     <span class="foundat">
         {{#if overwritten_from}}
             <span>@Overriden</span>
@@ -10,12 +13,16 @@
             but overwritten locally:
         {{else}}
             {{#if extended_from}}
-                <strong>@Overriden in</strong> <a href="{{extended_from}}.html#method_{{name}}">{{extended_from}}</a>
+                <strong>
+                    @Overriden in
+                </strong>
+                <a href="{{extended_from}}.html#method_{{name}}">
+                    {{extended_from}}
+                </a>
             {{/if}}
         {{/if}}
-        <br/>
     </span>
-
+-->
 
     {{#if access}}
         <strong> `{{access}}` </strong>
@@ -52,10 +59,10 @@
 
     <strong class="name">`{{name}}` (`{{paramsList}}`)</strong>
 
-
     <br/>
 
     {{{methodDescription}}}
+
     {{#if params}}
         <br/>
         <strong>Parameters:</strong>
@@ -83,7 +90,7 @@
                         <ul>
                             {{#props}}
                                 <li>
-                                    `{{name}}`
+                                    <span class="name">`{{name}}`</span>
                                     <strong class="type">
                                         &lt;{{#crossLink type}}{{/crossLink}}&gt;
                                     </strong>
@@ -92,7 +99,7 @@
                                         <ul>
                                             {{#props}}
                                                 <li>
-                                                    `{{name}}`
+                                                    <span class="name">`{{name}}`</span>
                                                     <strong class="type">
                                                         &lt;{{#crossLink type}}{{/crossLink}}&gt;
                                                     </strong>
@@ -142,6 +149,7 @@
     {{/if}}
 
     {{#if example}}
+        <br/>
         <strong>Example:</strong>
         {{{example}}}
     {{/if}}

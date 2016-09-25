@@ -22,12 +22,12 @@
             {{#params}}
                 <li>
                     {{#if optional}}
-                        `[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`
+                        <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>
                         <strong class="type">
                             &lt;{{#crossLink type}}{{/crossLink}}&gt;
                         </strong>
                     {{else}}
-                        `{{name}}`
+                        <span class="name">`{{name}}`</span>
                         <strong class="type">
                             &lt;{{#crossLink type}}{{/crossLink}}&gt;
                         </strong>
@@ -36,11 +36,12 @@
                         <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
                     {{/if}}
                     {{{description}}}
+
                     {{#if props}}
                         <ul>
                             {{#props}}
                                 <li>
-                                    `{{name}}`
+                                    <span class="name">`{{name}}`</span>
                                     <strong class="type">
                                         &lt;{{#crossLink type}}{{/crossLink}}&gt;
                                     </strong>

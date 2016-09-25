@@ -41,11 +41,14 @@
                 {{/if}}
 
                 {{#if extends}}
-                    <br/>
-                    <strong>
-                        extends
-                    </strong>
-                    <span class="type">&lt;{{#crossLink extends}}{{/crossLink}}&gt;</span>
+                    {{#unless isExtendedWithPrivate}}
+                        <br/>
+                        <strong>
+                            extends
+                        </strong>
+
+                        <span class="type">&lt;{{#crossLink extends}}{{/crossLink}}&gt;</span>
+                    {{/unless}}
                 {{/if}}
             </td>
             {{#unless isPackageClass}}
@@ -188,7 +191,6 @@
                     <br/>
                 </div>
 
-                <br/>
                 <table>
                     {{#methods}}
                         <tr>
@@ -204,7 +206,7 @@
         {{#if properties}}
             <div id="props">
                 {{#properties}}
-                    {{>props}}
+                    {{~>props}}
                 {{/properties}}
             </div>
         {{/if}}
@@ -216,7 +218,7 @@
                     {{#attrs}}
                         <tr>
                             <td>
-                                {{>attrs}}
+                                {{~>attrs}}
                             </td>
                         </tr>
                     {{/attrs}}
@@ -231,7 +233,7 @@
                     {{#events}}
                         <tr>
                             <td>
-                                {{>events}}
+                                {{~>events}}
                             </td>
                         </tr>
                     {{/events}}
