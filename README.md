@@ -31,9 +31,8 @@ In terms of the given theme a package is a special class that is tagged with "pa
 # Installation
 
 ```sh
-$ npm install yuidoc-zebkit-theme
+$ npm install https://github.com/barmalei/yuidoc-zebkit-theme
 ```
-
 
 # Usage
 
