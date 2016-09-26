@@ -110,13 +110,25 @@
 
         {{#if attrs}}
             <li>
-                <a href="#attrs">Attributes</a>
+                <a href="#attrs">
+                    {{#if isPackageClass}}
+                        Package attributes
+                    {{else}}
+                        Attributes
+                    {{/if}}
+                </a>
             </li>
         {{/if}}
 
         {{#if events}}
             <li>
-                <a href="#events">Events</a>
+                <a href="#events">
+                    {{#if isPackageClass}}
+                        Package events
+                    {{else}}
+                        Events
+                    {{/if}}
+                </a>
             </li>
         {{/if}}
     </ul>
@@ -183,6 +195,26 @@
                                         <b>
                                             <a class="name" href="#methods_{{name}}">{{name}} ({{paramsList}})</a>
                                         </b>
+                                    </td>
+
+                                    <td>
+                                        <span class="foundat">
+                                            {{#if overwritten_from}}
+                                                <span>Override</span>
+                                                <a href="{{overwritten_from/class}}.html#methods_{{overwritten_from/name}}">
+                                                    {{overwritten_from/class}}
+                                                </a>
+                                            {{else}}
+                                                {{#if extended_from}}
+                                                    <span>
+                                                        Implemented in
+                                                    </span>
+                                                    <a href="{{extended_from}}.html#methods_{{name}}">
+                                                        {{extended_from}}
+                                                    </a>
+                                                {{/if}}
+                                            {{/if}}
+                                        </span>
                                     </td>
                                 </tr>
                             {{/methods}}

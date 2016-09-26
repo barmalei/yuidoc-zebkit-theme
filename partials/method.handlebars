@@ -1,28 +1,25 @@
 <a name="methods_{{name}}"></a>
 
 <div class="method item{{#if access}} {{access}}{{/if}}">
-
-
-<!--
     <span class="foundat">
         {{#if overwritten_from}}
-            <span>@Overriden</span>
-            <a href="{{overwritten_from/class}}.html#method_{{overwritten_from/name}}">
+            <span>@Override</span>
+            <a href="{{overwritten_from/class}}.html#methods_{{overwritten_from/name}}">
                 {{overwritten_from/class}}
             </a>
-            but overwritten locally:
+            <br/>
         {{else}}
             {{#if extended_from}}
                 <strong>
-                    @Overriden in
+                    @Implemented in
                 </strong>
-                <a href="{{extended_from}}.html#method_{{name}}">
+                <a href="{{extended_from}}.html#methods_{{name}}">
                     {{extended_from}}
                 </a>
+                <br/>
             {{/if}}
         {{/if}}
     </span>
--->
 
     {{#if access}}
         <strong> `{{access}}` </strong>
@@ -55,7 +52,6 @@
             </span>
         {{/return}}
     {{/unless}}
-
 
     <strong class="name">`{{name}}` (`{{paramsList}}`)</strong>
 
@@ -121,7 +117,9 @@
         {{#return}}
             <br/>
             <div class="returns">
-                <strong>Returns:</strong>
+                <strong>
+                    Returns:
+                </strong>
                 <span class="type">
                     {{#if type}}
                         &lt;{{#crossLink type}}{{/crossLink}}&gt;
