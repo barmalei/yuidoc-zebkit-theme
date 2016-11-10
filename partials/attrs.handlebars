@@ -1,6 +1,16 @@
 <a name="attrs_{{name}}"></a>
 <div class="attrs item">
 
+    {{#if access}}
+        <strong>{{access}} </strong>
+    {{else}}
+        <strong> public </strong>
+    {{/if}}
+
+    {{#if readonly}}
+        <img title="readonly" width="18" height="18" src="../assets/css/lock.png" />
+    {{/if}}
+
     {{#if type}}
         <strong class="type">
             &lt;{{#crossLink type}}{{/crossLink}}&gt;

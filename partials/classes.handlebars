@@ -53,7 +53,7 @@
             </td>
             {{#unless isPackageClass}}
                 <td align="right" valign="top">
-                    <a href="{{../projectRoot}}/classes/{{packageName}}.html">
+                    <a href="{{../projectRoot}}classes/{{packageName}}.html">
                         &lt;{{packageName}}&gt;
                     </a>
                 </td>
@@ -260,6 +260,28 @@
 
         {{#if events}}
             <div id="events">
+                <ul style="column-count:2;column-gap:20px; list-style:none;">
+                    {{#events}}
+                        <li>
+                            <a class="name" href="#events_{{name}}">{{name}}
+                                (
+                                    {{#params}}
+                                        {{#if optional}}
+                                            <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>
+                                        {{else}}
+                                            <span class="name">`{{name}}`</span>
+                                        {{/if}}
+                                        {{#if multiple}}
+                                            <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
+                                        {{/if}}
+                                        ,
+                                    {{/params}}
+                                )
+                            </a>
+                        </li>
+                    {{/events}}
+                </ul>
+
                 <br/>
                 <table>
                     {{#events}}

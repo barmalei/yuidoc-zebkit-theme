@@ -1,5 +1,9 @@
 module.exports = {
     contextKeys: function(context) {
+        if (context == null) {
+            context = this;
+        }
+
         for(var k in context) {
             console.log("key = " + k);
         }
@@ -19,6 +23,10 @@ module.exports = {
             if (classes[i].name === this.name) {
                 var access    = classes[i].access,
                     className = classes[i].name;
+
+                if (className == null) {
+                    continue;
+                }
 
                 this.isPackageClass = access === 'package';
                 this.isPublicClass  = access === 'public' ;
@@ -83,7 +91,7 @@ module.exports = {
 
         for (var i = 0; i < context.length; i++) {
             var className = context[i].name;
-            if (className !== this.name && pkgs.indexOf(className) < 0 && className.indexOf(this.name) === 0) {
+            if (className != null && className !== this.name && pkgs.indexOf(className) < 0 && className.indexOf(this.name) === 0) {
                 var b = false;
                 for (var j = 0; j < pkgs.length; j++) {
                     if (pkgs[j].length > this.name.length && className.indexOf(pkgs[j]) === 0) {
