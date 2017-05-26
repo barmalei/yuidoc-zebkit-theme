@@ -47,9 +47,13 @@
                 </span>
             {{/if}}
         {{else}}
-            <span class="type">
-                void
-            </span>
+            {{#if chainable}}
+                <span class="type">chainable</span>
+            {{else}}
+                <span class="type">
+                    void
+                </span>
+            {{/if}}
         {{/return}}
     {{/unless}}
 

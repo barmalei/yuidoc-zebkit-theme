@@ -414,6 +414,13 @@ ul li p {
     border-width: 0px ;
 }
 
+.hd .name {
+    font-size: 110%;
+    color: orange;
+    border-width: 0px ;
+}
+
+
 #hd {
     background: -moz-linear-gradient(center top , #DCDBD9 0%, #F6F5F3 100%) repeat scroll 0 0 transparent;
     padding: 0 15px 1px 20px;
