@@ -1,0 +1,32 @@
+<div id="classes" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">All packages</h2>
+    </div>
+    <div class="bd">
+        <ul>
+            {{#packages classes}}
+                <li>
+                    <a href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a>
+                </li>
+            {{/packages}}
+        </ul>
+    </div>
+</div>
+
+
+<div id="classes" class="sidebox">
+    <div class="hd">
+        <h2 class="no-toc">All classes</h2>
+    </div>
+    <div class="bd">
+        <table style="background:none;" border="0">
+            {{#publicClasses classes}}
+                <tr>
+                    <td>
+                       <a href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a>
+                    </td>
+                </tr>
+            {{/publicClasses}}
+        </table>
+    </div>
+</div>

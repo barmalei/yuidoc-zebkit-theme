@@ -1,0 +1,32 @@
+
+<h2>{{moduleName}}</h2>
+<div class="intro">{{{moduleDescription}}}</div>
+
+<div class2="yui3-g">
+    {{#if moduleClasses}}
+        <strong>Package classes and interfaces:</strong>
+        <ul  style="column-count:2;column-gap:20px; list-style:none;">
+            {{#moduleClasses}}
+
+
+                <li style="width2:33%;">
+                    <a href="{{../projectRoot}}classes/{{name}}.html">
+                        {{displayName}} : {{is_constructor}}
+                    </a>
+                </li>
+            {{/moduleClasses}}
+        </ul>
+    {{/if}}
+
+    {{#module_methods}}
+
+            <p>This METHODS:</p>
+            <ul>
+                <li> </li>
+            </ul>
+
+    {{/module_methods}}
+
+
+</div>
+

@@ -1,6 +1,6 @@
 {
     "name": "yuidoc-zebkit-theme",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Packaged based, javadoc-like API doc",
     "repository": {
         "type": "git",
@@ -17,5 +17,17 @@
         "url": "https://github.com/barmalei/yuidoc-zebkit-theme/issues"
     },
     "homepage": "https://github.com/barmalei/yuidoc-zebkit-theme",
-    "license" : "Apache"
+    "license" : "Apache",
+
+    "devDependencies": {
+      "gulp"            : "latest",
+      "gulp-concat"     : "latest",
+      "gulp-expect-file": "latest",
+      "gulp-rename"     : "latest",
+      "gulp-rm"         : "latest",
+      "gulp-copy"       : "latest",
+      "gulp-clean"      : "latest",
+      "minimatch"       : "latest"
+    }
+
 }

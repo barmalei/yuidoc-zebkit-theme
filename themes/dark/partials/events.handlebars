@@ -1,0 +1,58 @@
+<a name="events_{{name}}"></a>
+<div class="events item">
+    <strong>
+        `{{name}}`
+    </strong>
+
+    {{#if type}}
+        <strong class="type">
+            &lt;{{#crossLink type}}{{/crossLink}}&gt;
+        </strong>
+    {{/if}}
+
+    {{#if extended_from}}<em>`/* Extended from {{extended_from}} */</em>`{{/if}}
+    {{#if overwritten_from}}<em>`/* Overwritten from {{name}} */`</em>{{/if}}
+
+    {{{eventDescription}}}
+
+    {{#if params}}
+        <br/>
+        <strong>Parameters:</strong>
+        <ul>
+            {{#params}}
+                <li>
+                    {{#if optional}}
+                        <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>
+                        <strong class="type">
+                            &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                        </strong>
+                    {{else}}
+                        <span class="name">`{{name}}`</span>
+                        <strong class="type">
+                            &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                        </strong>
+                    {{/if}}
+                    {{#if multiple}}
+                        <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
+                    {{/if}}
+                    {{{description}}}
+
+                    {{#if props}}
+                        <ul>
+                            {{#props}}
+                                <li>
+                                    <span class="name">`{{name}}`</span>
+                                    <strong class="type">
+                                        &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                    </strong>
+                                    {{{description}}}
+                                </li>
+                            {{/props}}
+                        </ul>
+                    {{/if}}
+                </li>
+            {{/params}}
+        </ul>
+    {{/if}}
+</div>
+

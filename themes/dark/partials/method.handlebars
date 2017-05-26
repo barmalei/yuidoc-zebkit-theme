@@ -1,0 +1,158 @@
+<a name="methods_{{name}}"></a>
+
+<div class="method item{{#if access}} {{access}}{{/if}}">
+    <span class="foundat">
+        {{#if overwritten_from}}
+            <span>@Override</span>
+            <a href="{{overwritten_from/class}}.html#methods_{{overwritten_from/name}}">
+                {{overwritten_from/class}}
+            </a>
+            <br/>
+        {{else}}
+            {{#if extended_from}}
+                <span>
+                    @Implemented in
+                </span>
+                <a href="{{extended_from}}.html#methods_{{name}}">
+                    {{extended_from}}
+                </a>
+                <br/>
+            {{/if}}
+        {{/if}}
+    </span>
+
+    {{#if access}}
+        <strong> `{{access}}` </strong>
+
+        {{#if static}}
+            <strong> static </strong>
+        {{/if}}
+
+    {{else}}
+
+        {{#unless is_constructor}}
+            <strong> public </strong>
+        {{/unless}}
+
+        {{#if static}}
+            <strong> static </strong>
+        {{/if}}
+    {{/if}}
+
+    {{#unless is_constructor}}
+        {{#return}}
+            {{#if type}}
+                <span class="type">
+                    &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                </span>
+            {{/if}}
+        {{else}}
+            {{#if chainable}}
+                <span class="type">chainable</span>
+            {{else}}
+                <span class="type">
+                    void
+                </span>
+            {{/if}}
+        {{/return}}
+    {{/unless}}
+
+    <strong class="name">`{{name}}` (`{{paramsList}}`)</strong>
+
+    <br/>
+
+    {{{methodDescription}}}
+
+    {{#if params}}
+        <br/>
+        <strong>Parameters:</strong>
+        <ul class="params">
+            {{#params}}
+                <li>
+                    {{#if optional}}
+                        <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>
+                        <strong class="type">
+                            &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                        </strong>
+                    {{else}}
+                        <span class="name">`{{name}}`</span>
+                        <strong class="type">
+                            &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                        </strong>
+                    {{/if}}
+                    {{#if multiple}}
+                        <span class="name">
+                            <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
+                        </span>
+                    {{/if}}
+                    {{{description}}}
+                    {{#if props}}
+                        <ul>
+                            {{#props}}
+                                <li>
+                                    <span class="name">`{{name}}`</span>
+                                    <strong class="type">
+                                        &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                    </strong>
+                                    {{{description}}}
+                                    {{#if props}}
+                                        <ul>
+                                            {{#props}}
+                                                <li>
+                                                    <span class="name">`{{name}}`</span>
+                                                    <strong class="type">
+                                                        &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                                    </strong>
+                                                    {{{description}}}
+                                                </li>
+                                            {{/props}}
+                                        </ul>
+                                    {{/if}}
+                                </li>
+                            {{/props}}
+                        </ul>
+                    {{/if}}
+                </li>
+            {{/params}}
+        </ul>
+    {{/if}}
+
+    {{#if return}}
+        {{#return}}
+            <br/>
+            <div class="returns">
+                <strong>
+                    Returns:
+                </strong>
+                <span class="type">
+                    {{#if type}}
+                        &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                    {{/if}}
+                </span>
+                {{{description}}}
+            </div>
+        {{/return}}
+    {{/if}}
+
+    {{#if throws}}
+        {{#throws}}
+            <br/>
+            <div class="throws">
+                <strong>Throws:</strong>
+                <span class="type">
+                    {{#if type}}
+                        &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                    {{/if}}
+                </span>
+                {{{description}}}
+            </div>
+
+        {{/throws}}
+    {{/if}}
+
+    {{#if example}}
+        <br/>
+        <strong>Example:</strong>
+        {{{example}}}
+    {{/if}}
+</div>
