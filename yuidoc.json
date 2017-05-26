@@ -5,6 +5,6 @@
     "url": "http://zebkit.com/",
     "options": {
         "linkNatives" : true,
-        "helpers"     : [ "helpers/helpers.js" ]
+        "helpers"     : [ "src/helpers/helpers.js" ]
     }
 }
