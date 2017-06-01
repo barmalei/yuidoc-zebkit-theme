@@ -16,7 +16,7 @@
                     {{/if}}
                 </strong>
 
-                <strong class="name" style2="color:orange;">
+                <strong class="name"">
                    {{moduleName}}
                 </strong>
 
@@ -81,7 +81,7 @@
     <ul>
         {{#if isPackageClass}}
             <li>
-                <a href="#package">Package classes</a>
+                <a href="#package">Package classes and interfaces</a>
             </li>
         {{/if}}
 
@@ -131,19 +131,45 @@
                 </a>
             </li>
         {{/if}}
+
+        {{#if hasImplementations}}
+            <li>
+                <a href="#implementations">
+                    Direct implementations
+                </a>
+            </li>
+        {{/if}}
     </ul>
 
     <div>
         {{#if isPackageClass}}
             <div id="package">
+
+                {{#hasInterfaces classes}}
                 <br/>
+                    <strong>Interfaces:</strong>
+                    <br/><br/>
+                    {{#packageClasses classes}}
+                        {{#if is_constructor}}
+                        {{else}}
+                            <a href="{{name}}.html">
+                                {{displayName}}
+                            </a>&nbsp;
+                        {{/if}}
+                    {{/packageClasses}}
+                {{/hasInterfaces}}
+
+                <br/><br/>
+                <strong>Classes: </strong>
                 <ul style="column-count:2;column-gap:20px; list-style:none;">
                     {{#packageClasses classes}}
-                        <li style="width2:33%;">
-                            <a href="{{../projectRoot}}classes/{{name}}.html">
-                                {{displayName}}
-                            </a>
-                        </li>
+                        {{#if is_constructor}}
+                            <li>
+                                <a href="{{name}}.html">
+                                    {{displayName}}
+                                </a>
+                            </li>
+                        {{/if}}
                     {{/packageClasses}}
                 </ul>
             </div>
@@ -293,6 +319,14 @@
                     {{/events}}
                 </table>
             </div>
+        {{/if}}
+
+        {{#if hasImplementations}}
+            {{#implementations}}
+                <a href="{{.}}.html">
+                    {{.}}
+                </a>
+            {{/implementations}}
         {{/if}}
 
     </div>

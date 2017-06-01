@@ -11,8 +11,9 @@ module.exports = {
 
     tagClass: function() {
         var classes = this.classes;
-
         var pkgs = [];
+
+        // collect packages to filter it from classes
         for (var i = 0; i < classes.length; i++) {
             if (classes[i].access === 'package' && this.name !== classes[i].name) {
                 pkgs.push(classes[i].name);
@@ -32,6 +33,7 @@ module.exports = {
                 this.isPublicClass  = access === 'public' ;
                 this.isPrivateClass = access === 'private';
                 this.isExtendedWithPrivate = false;
+                this.hasInterfaces = true;
 
                 if (this.extends != null) {
                     for (var n = 0; n < this.classes.length; n++) {
@@ -42,7 +44,10 @@ module.exports = {
                     }
                 }
 
-                var maxLen = 0, pkgName = null, methodCount = 0;
+                var maxLen = 0,
+                    pkgName = null,
+                    methodCount = 0;
+
                 for(var j = 0; j < pkgs.length; j++) {
                     if (pkgs[j].length > maxLen && className.indexOf(pkgs[j]) === 0) {
                         maxLen  = pkgs[j].length;
@@ -79,6 +84,18 @@ module.exports = {
         return ret;
     },
 
+    hasInterfaces : function(context, options) {
+        for (var i = 0; i < context.length; i++) {
+            if (context[i].access !== 'package' &&
+                typeof context[i].is_constructor === 'undefined' &&
+                context[i].name.indexOf(this.name) === 0)
+            {
+                return options.fn(this);
+            }
+        }
+        return '';
+    },
+
     packageClasses: function(context, options) {
         'use strict';
         var ret = "";
@@ -91,6 +108,7 @@ module.exports = {
 
         for (var i = 0; i < context.length; i++) {
             var className = context[i].name;
+
             if (className != null && className !== this.name && pkgs.indexOf(className) < 0 && className.indexOf(this.name) === 0) {
                 var b = false;
                 for (var j = 0; j < pkgs.length; j++) {

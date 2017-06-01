@@ -362,12 +362,12 @@ zebkit.package("io", function(pkg, Class) {
      *
      * Ideally any specific remote service extension of "zebkit.io.Service"
      * class has to implement two methods:
-
-        - **encode** to say how the given remote method with passed parameters have
-        to be transformed into a concrete service side protocol (JSON, XML, etc)
-        - **decode** to say how the specific service response has to be converted into
-        JavaScript object
-
+     *
+     *   - **encode** to say how the given remote method with passed parameters have
+     *   to be transformed into a concrete service side protocol (JSON, XML, etc)
+     *   - **decode** to say how the specific service response has to be converted into
+     *   JavaScript object
+     *
      * @class zebkit.io.Service
      * @constructor
      * @param {String} url an URL of remote service

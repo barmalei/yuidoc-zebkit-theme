@@ -937,6 +937,7 @@ zebkit.package("util", function(pkg, Class) {
      * @param {zebkit.util.Position.Metric} m a position metric
      * @constructor
      * @class zebkit.util.Position
+     * @uses  zebkit.EventProducer
      */
 
     /**
