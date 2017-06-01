@@ -15,10 +15,17 @@ module.exports = function (data, options) {
                     ref.hasImplementations = true;
                     ref.implementations.push(clz.name);
                 }
-            } else if (clz['uses']) {
+            }
+
+            if (clz['uses']) {
                 var interfaces = clz['uses'];
+
                 for(var i = 0; i < interfaces.length; i++) {
-                    var intf = interfaces[i];
+                    var intf = interfaces[i].trim();
+                    if (intf[0] === '{') {
+                        intf = intf.substring(1, intf.length - 1);
+                    }
+
                     if (data.classes.hasOwnProperty(intf)) {
                         var ref = data.classes[intf];
                         if (!ref.implementations) ref.implementations = [];

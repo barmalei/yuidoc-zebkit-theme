@@ -96,6 +96,7 @@
                 </a>
             </li>
         {{/if}}
+
         {{#if properties}}
             <li>
                 <a href="#props">
@@ -150,12 +151,11 @@
                     <strong>Interfaces:</strong>
                     <br/><br/>
                     {{#packageClasses classes}}
-                        {{#if is_constructor}}
-                        {{else}}
+                        {{#unless is_constructor}}
                             <a href="{{name}}.html">
                                 {{displayName}}
                             </a>&nbsp;
-                        {{/if}}
+                        {{/unless}}
                     {{/packageClasses}}
                 {{/hasInterfaces}}
 
@@ -322,11 +322,18 @@
         {{/if}}
 
         {{#if hasImplementations}}
-            {{#implementations}}
-                <a href="{{.}}.html">
-                    {{.}}
-                </a>
-            {{/implementations}}
+            <div id="implementations">
+                <br/>
+                <ul style="column-count:2;column-gap:20px;list-style:none;">
+                    {{#implementations}}
+                        <li>
+                            <a href="{{.}}.html">
+                                {{.}}
+                            </a>
+                        </li>
+                     {{/implementations}}
+                </ul>
+            </div>
         {{/if}}
 
     </div>
