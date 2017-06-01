@@ -57,7 +57,6 @@ gulp.task("dark-theme-cp", function() {
 gulp.task('dark', [ "dark-theme-rn" ], function (gulpCallBack){
     var spawn  = require('child_process').spawn;
     var yuidoc = spawn('yuidoc', ['-t', './themes/dark',
-                                  '-H', './src/helpers/helpers.js',
                                   "-o", "apidoc-dark",
                                   "-n",
                                   './example/' ], { stdio: 'inherit' });
@@ -67,7 +66,9 @@ gulp.task('dark', [ "dark-theme-rn" ], function (gulpCallBack){
     });
 });
 
-gulp.task('light', [ "light-theme-rn" ],  function (gulpCallBack){
+gulp.task('light',
+  [ "light-theme-rn" ],
+  function (gulpCallBack){
     var spawn  = require('child_process').spawn;
     var yuidoc = spawn('yuidoc', ['-t', './themes/light',
                                   "-o", "apidoc-light",
