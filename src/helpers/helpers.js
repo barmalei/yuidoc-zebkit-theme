@@ -55,8 +55,20 @@ module.exports = {
                     }
                 }
 
+                var extendedFromCount = 0, implementedCount = 0;
+                if (this.methods) {
+                    for(var j = 0; j < this.methods.length; j++) {
+                        if (this.methods[j].extended_from) {
+                            extendedFromCount++;
+                        } else {
+                            implementedCount++;
+                        }
+                    }
+                }
+
                 this.packageName = pkgName;
-                this.showMethodsIndex = this.methods != null && this.methods.length > 3;
+                this.showMethodsIndex = implementedCount > 3;
+                this.showInheritedIndex = extendedFromCount > 0;
                 break;
             }
         }

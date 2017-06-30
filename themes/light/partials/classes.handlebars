@@ -183,6 +183,9 @@
                         <br/>
                         <table border="0" style="width:auto;" cellpadding="2">
                             {{#methods}}
+                                {{#unless extended_from}}
+
+
                                 <tr style="background:none;">
                                     <td>
                                         {{#if access}}
@@ -243,19 +246,58 @@
                                         </span>
                                     </td>
                                 </tr>
+
+                                {{/unless}}
+
+
                             {{/methods}}
                         </table>
                     {{/if}}
                     <br/>
                 </div>
 
+
+                {{#if showInheritedIndex}}
+                    <br/>
+                    <div class="method">
+                        <strong>Inherited methods:</strong>
+                        <div style="padding:6px;">
+                            {{#methods}}
+                                {{#if extended_from}}
+                                    <small>
+                                    {{#return}}
+                                        {{#if type}}
+                                            <span class="type">
+                                                &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                            </span>
+                                        {{/if}}
+                                    {{else}}
+                                        <span class="type">
+                                            void
+                                        </span>
+                                    {{/return}}
+
+                                    <a href="{{extended_from}}.html#methods_{{name}}">
+                                        <b>{{name}}(</b>{{paramsList}}<b>)</b>
+                                    </a>&nbsp;&nbsp;
+                                    </small>
+                                {{/if}}
+                            {{/methods}}
+                        </div>
+
+                        <br/><br/>
+                    </div>
+                {{/if}}
+
                 <table>
                     {{#methods}}
+                        {{#unless extended_from}}
                         <tr>
                             <td>
                                 {{~>method}}
                             </td>
                         </tr>
+                        {{/unless}}
                     {{/methods}}
                 </table>
             </div>
@@ -291,6 +333,9 @@
                         <li>
                             <a class="name" href="#events_{{name}}">{{name}}
                                 (
+                                    {{paramsList}}
+
+
                                     {{#params}}
                                         {{#if optional}}
                                             <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>

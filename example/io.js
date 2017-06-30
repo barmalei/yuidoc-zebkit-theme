@@ -420,7 +420,7 @@ zebkit.package("io", function(pkg, Class) {
               * @protected
               * @param  {String}   url an URL
               * @param  {String}   data  a data to be send
-              * @return {zebkit.util.}  a result
+              * @return {Object}  a result
               * @method  send
               */
             this.send = function(url, data) {
@@ -491,7 +491,7 @@ zebkit.package("io", function(pkg, Class) {
      * @constructor
      * @param {String} url an URL of remote service
      * @param {Array} methods a list of methods names the remote service provides
-     * @extends {zebkit.io.Service}
+     * @extends zebkit.io.Service
      */
     pkg.JRPC = Class(pkg.Service, [
         function $prototype() {
