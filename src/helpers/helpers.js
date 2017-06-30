@@ -29,6 +29,22 @@ module.exports = {
                     continue;
                 }
 
+                if (this.events) {
+                    for(var j = 0; j < this.events.length; j++) {
+                        var event = this.events[j];
+                        event.paramsList = "";
+                        if (event.params) {
+                            for (var w = 0; w < event.params.length; w++) {
+                                if (w > 0) {
+                                    event.paramsList += ", ";
+                                }
+                                event.paramsList += (event.params[w].name);
+                            }
+                        }
+                    }
+                }
+
+                this.showEventsIndex = this.events && this.events.length > 2;
                 this.isPackageClass = access === 'package';
                 this.isPublicClass  = access === 'public' ;
                 this.isPrivateClass = access === 'private';

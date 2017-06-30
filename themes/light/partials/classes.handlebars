@@ -175,7 +175,6 @@
             </div>
         {{/if}}
 
-
         {{#if methods}}
             <div id="methods">
                 <div class="bd">
@@ -184,29 +183,61 @@
                         <table border="0" style="width:auto;" cellpadding="2">
                             {{#methods}}
                                 {{#unless extended_from}}
-
-
-                                <tr style="background:none;">
-                                    <td>
-                                        {{#if access}}
-                                            <strong> `{{access}}` </strong>
-
-                                            {{#if static}}
-                                                <strong> static </strong>
-                                            {{/if}}
-
-                                        {{else}}
-                                            {{#unless is_constructor}}
-                                                <strong> public </strong>
+                                    <tr style="background:none;">
+                                        <td>
+                                            {{#if access}}
+                                                <strong> `{{access}}` </strong>
 
                                                 {{#if static}}
                                                     <strong> static </strong>
                                                 {{/if}}
-                                            {{/unless}}
-                                        {{/if}}
-                                    </td>
 
-                                    <td>
+                                            {{else}}
+                                                {{#unless is_constructor}}
+                                                    <strong> public </strong>
+
+                                                    {{#if static}}
+                                                        <strong> static </strong>
+                                                    {{/if}}
+                                                {{/unless}}
+                                            {{/if}}
+                                        </td>
+
+                                        <td>
+                                            {{#return}}
+                                                {{#if type}}
+                                                    <span class="type">
+                                                        &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                                    </span>
+                                                {{/if}}
+                                            {{else}}
+                                                <span class="type">
+                                                    void
+                                                </span>
+                                            {{/return}}
+                                        </td>
+
+                                        <td>
+                                            <b>
+                                                <a class="name" href="#methods_{{name}}">{{name}} ({{paramsList}})</a>
+                                            </b>
+                                        </td>
+                                    </tr>
+                                {{/unless}}
+                            {{/methods}}
+                        </table>
+                    {{/if}}
+                    <br/>
+                </div>
+
+                {{#if showInheritedIndex}}
+                    <br/>
+                    <div class="method">
+                        <strong>Inherited methods:</strong>
+                        <div style="padding:6px;">
+                            {{#methods}}
+                                {{#if extended_from}}
+                                    <small style="white-space: nowrap;">
                                         {{#return}}
                                             {{#if type}}
                                                 <span class="type">
@@ -218,73 +249,14 @@
                                                 void
                                             </span>
                                         {{/return}}
-                                    </td>
 
-                                    <td>
-                                        <b>
-                                            <a class="name" href="#methods_{{name}}">{{name}} ({{paramsList}})</a>
-                                        </b>
-                                    </td>
-
-                                    <td>
-                                        <span class="foundat">
-                                            {{#if overwritten_from}}
-                                                <span>Override</span>
-                                                <a href="{{overwritten_from/class}}.html#methods_{{overwritten_from/name}}">
-                                                    {{overwritten_from/class}}
-                                                </a>
-                                            {{else}}
-                                                {{#if extended_from}}
-                                                    <span>
-                                                        Implemented in
-                                                    </span>
-                                                    <a href="{{extended_from}}.html#methods_{{name}}">
-                                                        {{extended_from}}
-                                                    </a>
-                                                {{/if}}
-                                            {{/if}}
-                                        </span>
-                                    </td>
-                                </tr>
-
-                                {{/unless}}
-
-
-                            {{/methods}}
-                        </table>
-                    {{/if}}
-                    <br/>
-                </div>
-
-
-                {{#if showInheritedIndex}}
-                    <br/>
-                    <div class="method">
-                        <strong>Inherited methods:</strong>
-                        <div style="padding:6px;">
-                            {{#methods}}
-                                {{#if extended_from}}
-                                    <small>
-                                    {{#return}}
-                                        {{#if type}}
-                                            <span class="type">
-                                                &lt;{{#crossLink type}}{{/crossLink}}&gt;
-                                            </span>
-                                        {{/if}}
-                                    {{else}}
-                                        <span class="type">
-                                            void
-                                        </span>
-                                    {{/return}}
-
-                                    <a href="{{extended_from}}.html#methods_{{name}}">
-                                        <b>{{name}}(</b>{{paramsList}}<b>)</b>
-                                    </a>&nbsp;&nbsp;
+                                        <a href="{{extended_from}}.html#methods_{{name}}">
+                                            <b>{{name}}(</b>{{paramsList}}<b>)</b>
+                                        </a>&nbsp;&nbsp;
                                     </small>
                                 {{/if}}
                             {{/methods}}
                         </div>
-
                         <br/><br/>
                     </div>
                 {{/if}}
@@ -292,11 +264,11 @@
                 <table>
                     {{#methods}}
                         {{#unless extended_from}}
-                        <tr>
-                            <td>
-                                {{~>method}}
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    {{~>method}}
+                                </td>
+                            </tr>
                         {{/unless}}
                     {{/methods}}
                 </table>
@@ -326,33 +298,22 @@
             </div>
         {{/if}}
 
+
         {{#if events}}
             <div id="events">
-                <ul style="column-count:2;column-gap:20px; list-style:none;">
-                    {{#events}}
-                        <li>
-                            <a class="name" href="#events_{{name}}">{{name}}
-                                (
-                                    {{paramsList}}
-
-
-                                    {{#params}}
-                                        {{#if optional}}
-                                            <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>
-                                        {{else}}
-                                            <span class="name">`{{name}}`</span>
-                                        {{/if}}
-                                        {{#if multiple}}
-                                            <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
-                                        {{/if}}
-                                        ,
-                                    {{/params}}
-                                )
-                            </a>
-                        </li>
-                    {{/events}}
-                </ul>
-
+                {{#if showEventsIndex}}
+                    <ul style="list-style:none;">
+                        {{#events}}
+                            <li>
+                                <a class="name" href="#events_{{name}}"><b>{{name}}</b>
+                                    (
+                                        {{paramsList}}
+                                    )
+                                </a>
+                            </li>
+                        {{/events}}
+                    </ul>
+                {{/if}}
                 <br/>
                 <table>
                     {{#events}}

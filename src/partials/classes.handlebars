@@ -264,11 +264,11 @@
                 <table>
                     {{#methods}}
                         {{#unless extended_from}}
-                        <tr>
-                            <td>
-                                {{~>method}}
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    {{~>method}}
+                                </td>
+                            </tr>
                         {{/unless}}
                     {{/methods}}
                 </table>
@@ -298,33 +298,22 @@
             </div>
         {{/if}}
 
+
         {{#if events}}
             <div id="events">
-                <ul style="column-count:2;column-gap:20px; list-style:none;">
-                    {{#events}}
-                        <li>
-                            <a class="name" href="#events_{{name}}">{{name}}
-                                (
-                                    {{paramsList}}
-
-
-                                    {{#params}}
-                                        {{#if optional}}
-                                            <span class="name">`[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]`</span>
-                                        {{else}}
-                                            <span class="name">`{{name}}`</span>
-                                        {{/if}}
-                                        {{#if multiple}}
-                                            <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
-                                        {{/if}}
-                                        ,
-                                    {{/params}}
-                                )
-                            </a>
-                        </li>
-                    {{/events}}
-                </ul>
-
+                {{#if showEventsIndex}}
+                    <ul style="list-style:none;">
+                        {{#events}}
+                            <li>
+                                <a class="name" href="#events_{{name}}"><b>{{name}}</b>
+                                    (
+                                        {{paramsList}}
+                                    )
+                                </a>
+                            </li>
+                        {{/events}}
+                    </ul>
+                {{/if}}
                 <br/>
                 <table>
                     {{#events}}
