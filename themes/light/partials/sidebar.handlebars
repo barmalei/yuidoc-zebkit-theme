@@ -16,12 +16,21 @@
 
 <div id="classes" class="sidebox">
     <div class="hd">
-        <h2 class="no-toc">All classes</h2>
+        <table border="0" cellpadding="0" cellspecing="0">
+            <tr>
+                <td>
+                    <h2 class="no-toc">All classes</h2>
+                </td>
+                <td>
+                    <input id="search" style="width:95%;" type=text value=""/>
+                </td>
+            </tr>
+        </table>
     </div>
     <div class="bd">
-        <table style="background:none;" border="0">
+        <table id="allClasses" style="background:none;" border="0">
             {{#publicClasses classes}}
-                <tr>
+                <tr class="classNameCell" className="{{name}}" name="allClassesItem">
                     <td>
                        <a href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a>
                     </td>
@@ -30,3 +39,20 @@
         </table>
     </div>
 </div>
+
+<script>
+    var root = document.getElementById("allClasses");
+    document.getElementById("search").addEventListener('input', function(e) {
+        var items = document.getElementsByName("allClassesItem"),
+            value = this.value.trim();
+
+        for(var i = 0; i < items.length; i++) {
+            var item = items[i];
+            if (value.length < 3 || item.getAttribute("className").toLowerCase().indexOf(value) >= 0) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            };
+        }
+    });
+</script>

@@ -238,22 +238,11 @@
                             {{#methods}}
                                 {{#if extended_from}}
                                     <small style="white-space: nowrap;">
-                                        {{#return}}
-                                            {{#if type}}
-                                                <span class="type">
-                                                    &lt;{{#crossLink type}}{{/crossLink}}&gt;
-                                                </span>
-                                            {{/if}}
-                                        {{else}}
-                                            <span class="type">
-                                                void
-                                            </span>
-                                        {{/return}}
-
                                         <a href="{{extended_from}}.html#methods_{{name}}">
                                             <b>{{name}}(</b>{{paramsList}}<b>)</b>
-                                        </a>&nbsp;&nbsp;
+                                        </a>
                                     </small>
+                                    &nbsp;&nbsp;
                                 {{/if}}
                             {{/methods}}
                         </div>
