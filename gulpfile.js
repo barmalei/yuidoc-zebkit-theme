@@ -3,7 +3,8 @@ var gulp      = require('gulp'),
     rename    = require('gulp-rename'),
     rm        = require('gulp-rm'),
     clean     = require('gulp-clean'),
-    expect    = require('gulp-expect-file');
+    expect    = require('gulp-expect-file'),
+    spawn     = require('cross-spawn');
 
 gulp.task('themes', ["light-theme-rm", "dark-theme-rm"]);
 
@@ -55,7 +56,6 @@ gulp.task("dark-theme-cp", function() {
 
 
 gulp.task('dark', [ "dark-theme-rn" ], function (gulpCallBack){
-    var spawn  = require('child_process').spawn;
     var yuidoc = spawn('yuidoc', ['-t', './themes/dark',
                                   "-o", "apidoc-dark",
                                   "-n",
@@ -69,7 +69,6 @@ gulp.task('dark', [ "dark-theme-rn" ], function (gulpCallBack){
 gulp.task('light',
   [ "light-theme-rn" ],
   function (gulpCallBack){
-    var spawn  = require('child_process').spawn;
     var yuidoc = spawn('yuidoc', ['-t', './themes/light',
                                   "-o", "apidoc-light",
                                   "-n",

@@ -27,6 +27,7 @@
       "gulp-rm"         : "latest",
       "gulp-copy"       : "latest",
       "gulp-clean"      : "latest",
+      "cross-spawn"     : "latest",
       "minimatch"       : "latest"
     }
 
