@@ -44,7 +44,6 @@ module.exports = {
                     }
                 }
 
-                this.showEventsIndex = this.events && this.events.length > 2;
                 this.isPackageClass = access === 'package';
                 this.isPublicClass  = access === 'public' ;
                 this.isPrivateClass = access === 'private';
@@ -82,9 +81,39 @@ module.exports = {
                     }
                 }
 
+                var extendedFromEventsCount = 0, implementedEventsCount = 0;
+                if (this.events) {
+                    for(var j = 0; j < this.events.length; j++) {
+                        if (this.events[j].extended_from) {
+                            extendedFromEventsCount++;
+                        } else {
+                            implementedEventsCount++;
+                        }
+                    }
+                }
+
+                var extendedFromAttrsCount = 0, implementedAttrsCount = 0;
+                if (this.attrs) {
+                    for(var j = 0; j < this.attrs.length; j++) {
+                        if (this.attrs[j].extended_from) {
+                            extendedFromAttrsCount++;
+                        } else {
+                            implementedAttrsCount++;
+                        }
+                    }
+                }
+
                 this.packageName = pkgName;
+
                 this.showMethodsIndex = implementedCount > 3;
                 this.showInheritedIndex = extendedFromCount > 0;
+
+                this.showEventsIndex = implementedEventsCount > 3;
+                this.showInheritedEventsIndex = extendedFromEventsCount > 0;
+
+                this.showAttrsIndex = implementedAttrsCount > 3;
+                this.showInheritedAttrsIndex = extendedFromAttrsCount > 0;
+
                 break;
             }
         }
