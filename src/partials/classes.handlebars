@@ -275,28 +275,32 @@
         {{#if attrs}}
             <div id="attrs">
                 {{#if showInheritedAttrsIndex}}
-                    <br/>
-                    <div class="attts">
+                    <br/><br/>
+                    <div class="attrs">
                         <strong>Inherited attributes:</strong>
+                        <br/>
                         <div style="padding:6px;">
                             {{#attrs}}
                                 {{#if extended_from}}
                                     <small style="white-space: nowrap;">
+
+                                        {{#if access}}
+                                            <strong>{{access}} </strong>
+                                        {{else}}
+                                            <strong> public </strong>
+                                        {{/if}}
+
+                                        {{#if readonly}}
+                                            <img title="readonly" width="14" height="14" src="../assets/css/lock.png" />
+                                        {{/if}}
+
+                                        {{#if type}}
+                                            <strong class="type">
+                                                {{#crossLink type}}{{/crossLink}}
+                                            </strong>
+                                        {{/if}}
+
                                         <a href="{{extended_from}}.html#atttrs_{{name}}">
-                                              {{#if access}}
-                                                  <strong>{{access}} </strong>
-                                              {{else}}
-                                                  <strong> public </strong>
-                                              {{/if}}
-
-                                              {{#if readonly}}
-                                                  <img title="readonly" width="14" height="14" src="../assets/css/lock.png" />
-                                              {{/if}}
-
-                                              <strong class="type">
-                                                  {{type}}
-                                              </strong>
-
                                               {{name}}
                                         </a>
                                     </small>
@@ -308,18 +312,21 @@
                     </div>
                 {{/if}}
 
-                <br/>
-                <table>
-                    {{#attrs}}
-                        <tr>
-                            <td>
-                                {{#unless extended_from}}
-                                    {{~>attrs}}
-                                {{/unless}}
-                            </td>
-                        </tr>
-                    {{/attrs}}
-                </table>
+
+                {{#if hasAttrs}}
+                    <br/>
+                    <table>
+                        {{#attrs}}
+                            <tr>
+                                <td>
+                                    {{#unless extended_from}}
+                                        {{~>attrs}}
+                                    {{/unless}}
+                                </td>
+                            </tr>
+                        {{/attrs}}
+                    </table>
+                {{/if}}
             </div>
         {{/if}}
 
@@ -341,9 +348,10 @@
                 {{/if}}
 
                 {{#if showInheritedEventsIndex}}
-                    <br/>
+                    <br/><br/>
                     <div class="event">
                         <strong>Inherited events:</strong>
+                        <br/>
                         <div style="padding:6px;">
                             {{#events}}
                                 {{#if extended_from}}

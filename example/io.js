@@ -559,7 +559,7 @@ zebkit.package("io", function(pkg, Class) {
 
      * @class zebkit.io.XRPC
      * @constructor
-     * @extends {zebkit.io.Service}
+     * @extends zebkit.io.Service
      * @param {String} url an URL of remote service
      * @param {Array} methods a list of methods names the remote service provides
      */

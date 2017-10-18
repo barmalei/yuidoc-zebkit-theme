@@ -112,6 +112,7 @@ module.exports = {
                 this.showInheritedEventsIndex = extendedFromEventsCount > 0;
 
                 this.showAttrsIndex = implementedAttrsCount > 3;
+                this.hasAttrs       = implementedAttrsCount > 0;
                 this.showInheritedAttrsIndex = extendedFromAttrsCount > 0;
 
                 break;
