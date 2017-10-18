@@ -1324,7 +1324,7 @@ zebkit.package("util", function(pkg, Class) {
      * @param {zebkit.util.Position.Metric} m a position metric
      * @constructor
      * @class zebkit.util.SingleColPosition
-     * @extends {zebkit.util.Position}
+     * @extends zebkit.util.Position
      */
     pkg.SingleColPosition = Class(pkg.Position, [
         function $prototype() {
