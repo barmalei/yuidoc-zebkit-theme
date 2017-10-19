@@ -275,9 +275,10 @@
         {{#if attrs}}
             <div id="attrs">
                 {{#if showInheritedAttrsIndex}}
-                    <br/>
-                    <div class="attts">
+                    <br/><br/>
+                    <div class="attrs">
                         <strong>Inherited attributes:</strong>
+                        <br/>
                         <div style="padding:6px;">
                             {{#attrs}}
                                 {{#if extended_from}}
@@ -295,7 +296,7 @@
 
                                         {{#if type}}
                                             <strong class="type">
-                                                &lt;{{#crossLink type}}{{/crossLink}}&gt;
+                                                {{#crossLink type}}{{/crossLink}}
                                             </strong>
                                         {{/if}}
 
@@ -311,18 +312,21 @@
                     </div>
                 {{/if}}
 
-                <br/>
-                <table>
-                    {{#attrs}}
-                        <tr>
-                            <td>
-                                {{#unless extended_from}}
-                                    {{~>attrs}}
-                                {{/unless}}
-                            </td>
-                        </tr>
-                    {{/attrs}}
-                </table>
+
+                {{#if hasAttrs}}
+                    <br/>
+                    <table>
+                        {{#attrs}}
+                            <tr>
+                                <td>
+                                    {{#unless extended_from}}
+                                        {{~>attrs}}
+                                    {{/unless}}
+                                </td>
+                            </tr>
+                        {{/attrs}}
+                    </table>
+                {{/if}}
             </div>
         {{/if}}
 
@@ -344,9 +348,10 @@
                 {{/if}}
 
                 {{#if showInheritedEventsIndex}}
-                    <br/>
+                    <br/><br/>
                     <div class="event">
                         <strong>Inherited events:</strong>
+                        <br/>
                         <div style="padding:6px;">
                             {{#events}}
                                 {{#if extended_from}}
